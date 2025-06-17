@@ -5,7 +5,7 @@
     <classes>
       <class name="TestCase.FinialProjecrt.TestCases">
         <methods>
-          <include name="HotelBookingProcess"/>
+          <include name="CheckOutCombl"/>
           <include name="HomePage"/>
         </methods>
       </class> <!-- TestCase.FinialProjecrt.TestCases -->

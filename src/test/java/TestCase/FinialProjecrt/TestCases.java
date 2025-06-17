@@ -94,7 +94,7 @@ public class TestCases extends DataTestCase {
 	}
 
 	@Test(priority = 3, enabled = false)
-	public void LoginAccount() {
+	public void LoginAccount() throws InterruptedException {
 
 		WebElement Login = driver.findElement(By.cssSelector(".MuiButtonBase-root.alm-desktop-1nxh3l"));
 		Login.click();
@@ -108,9 +108,10 @@ public class TestCases extends DataTestCase {
 		WebElement Password = driver.findElement(By.id("InputField_password"));
 		Password.sendKeys("MOuss1234#");
 
-		WebElement signInButton = driver.findElement(By.xpath("//span[text()='Sign in']"));
-		signInButton.click();
-
+		WebElement SignInButton = driver.findElement(By.xpath("//span[text()='Sign in']"));
+		SignInButton.click();
+        
+		Thread.sleep(3000);
 	}
 
 	@Test(priority = 4, enabled = false)
@@ -133,8 +134,9 @@ public class TestCases extends DataTestCase {
 		continueButton.click();
 
 	}
-
-	@Test(priority = 5, enabled = false)
+	
+	
+	@Test(priority = 5)
 	public void FlightSearch() throws InterruptedException {
 
 		WebElement FlightOrigin = driver.findElement(By.id("FlightHome__AirportPicker__OriginSearchInput"));
@@ -176,7 +178,9 @@ public class TestCases extends DataTestCase {
 		Search.click();
 	}
 
-	@Test(priority = 6, enabled = false)
+	
+	
+	@Test(priority = 6)
 	public void ProcessCheckOut() throws InterruptedException {
 		Thread.sleep(9000);
 		WebElement CheckPricesButton = driver
@@ -208,7 +212,7 @@ public class TestCases extends DataTestCase {
 
 	}
 
-	@Test(priority = 7, enabled = false)
+	@Test(priority = 7)
 	public void CheckOut() throws InterruptedException {
 
 		WebElement titleMr = wait.until(ExpectedConditions
@@ -234,109 +238,119 @@ public class TestCases extends DataTestCase {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0,200)");
 
-		WebElement DayInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-2")));
-		DayInput.click();
-		Thread.sleep(1000);
-		DayInput.sendKeys("5");
-		Thread.sleep(1000);
-		DayInput.sendKeys(Keys.ENTER);
-
+		
 		Thread.sleep(3000);
-		js.executeScript("window.scrollTo(200,0)");
-		WebElement MonthsInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-3")));
-		MonthsInput.click();
-		Thread.sleep(1000);
-		MonthsInput.sendKeys("2 - February");
-		Thread.sleep(2000);
-		MonthsInput.sendKeys(Keys.ENTER);
+		
+		
+	}
+		
 
-		Thread.sleep(3000);
-
-		WebElement YearsInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-4")));
-		YearsInput.click();
-		YearsInput.sendKeys("2001");
-		Thread.sleep(2000);
-		YearsInput.sendKeys(Keys.ENTER);
+    @Test(priority = 8)
+    public void CheckOutCombl() throws InterruptedException {
+    
+        String RandomDay = Days[rand.nextInt(Days.length)];
+        WebElement DayInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-2")));
+        DayInput.click();
+        DayInput.sendKeys(RandomDay);
+        DayInput.sendKeys(Keys.ENTER);
 
 		Thread.sleep(3000);
 
-		WebElement nationality = driver.findElement(By.id("mui-5"));
-		nationality.click();
-		Thread.sleep(1000);
-		nationality.sendKeys("Jordan");
-		Thread.sleep(2000);
-		nationality.sendKeys(Keys.ENTER);
+        String RandomMonth = Months[rand.nextInt(Months.length)];
+        WebElement MonthsInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-3")));
+        MonthsInput.click();
+        MonthsInput.sendKeys(RandomMonth);
+        MonthsInput.sendKeys(Keys.ENTER);
+        
+        Thread.sleep(3000);
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollTo(0,200)");
+		Thread.sleep(3000);
 
-		Thread.sleep(2000);
+        String RandomYear = Years[rand.nextInt(Years.length)];
+        WebElement YearsInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-4")));
+        YearsInput.click();
+        YearsInput.sendKeys(RandomYear);
+        YearsInput.sendKeys(Keys.ENTER);
+        
+		Thread.sleep(3000);
 
-		WebElement PassportNumber = driver.findElement(By.id("PaxForm__ADT1__IdNumber"));
-		PassportNumber.sendKeys("T491520");
+        WebElement nationality = driver.findElement(By.id("mui-5"));
+        nationality.click();
+        nationality.sendKeys("Jordan");
+        nationality.sendKeys(Keys.ENTER);
+        
+		Thread.sleep(3000);
 
-		WebElement IssuingCountry = driver.findElement(By.name("issuingCountryInput"));
-		IssuingCountry.click();
-		Thread.sleep(1000);
-		IssuingCountry.sendKeys("Jordan");
-		Thread.sleep(2000);
-		IssuingCountry.sendKeys(Keys.ENTER);
-
-		Thread.sleep(2000);
-
-		WebElement ExpiryDay = wait.until(ExpectedConditions.elementToBeClickable(By.name("idExpiryDateDayInput")));
-		ExpiryDay.click();
-		Thread.sleep(1000);
-		ExpiryDay.sendKeys("15");
-		Thread.sleep(2000);
-		ExpiryDay.sendKeys(Keys.ENTER);
-
-		Thread.sleep(2000);
-
-		WebElement ExpiryMonth = wait.until(ExpectedConditions.elementToBeClickable(By.name("idExpiryDateMonthInput")));
-		ExpiryMonth.click();
-		Thread.sleep(1000);
-		ExpiryMonth.sendKeys("12 - December");
-		Thread.sleep(2000);
-		ExpiryMonth.sendKeys(Keys.ENTER);
-
-		Thread.sleep(2000);
-
-		WebElement ExpiryYear = wait.until(ExpectedConditions.elementToBeClickable(By.name("idExpiryDateYearInput")));
-		ExpiryYear.click();
-		Thread.sleep(1000);
-		ExpiryYear.sendKeys("2028");
-		Thread.sleep(2000);
-		ExpiryYear.sendKeys(Keys.ENTER);
-
-		WebElement ContactEmaIL = driver.findElement(By.name("contact.email"));
-		ContactEmaIL.sendKeys("Mousaabukhaled8@gmail.com");
-
-		WebElement Input = driver.findElement(By.id("mui-11"));
-		Input.click();
-
-		Thread.sleep(300);
-		Input.click();
-
-		List<WebElement> Options = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//li")));
+        WebElement PassportNumber = driver.findElement(By.id("PaxForm__ADT1__IdNumber"));
+        PassportNumber.sendKeys("T491520");
 
 		Thread.sleep(3000);
-		for (WebElement option : Options) {
-			if (option.getText().contains("+962")) {
-				Thread.sleep(200);
-				option.click();
-				break;
-			}
+		
+        WebElement IssuingCountry = driver.findElement(By.name("issuingCountryInput"));
+        IssuingCountry.click();
+        IssuingCountry.sendKeys("Jordan");
+        IssuingCountry.sendKeys(Keys.ENTER);
+
+		Thread.sleep(3000);
+        String randomDay = ExpiryDays[rand.nextInt(ExpiryDays.length)];
+        WebElement ExpiryDay = wait.until(ExpectedConditions.elementToBeClickable(By.name("idExpiryDateDayInput")));
+        ExpiryDay.click();
+        ExpiryDay.sendKeys(randomDay);
+        ExpiryDay.sendKeys(Keys.ENTER);
+		Thread.sleep(3000);
+
+        String randomMonth = ExpiryMonths[rand.nextInt(ExpiryMonths.length)];
+        WebElement ExpiryMonth = wait.until(ExpectedConditions.elementToBeClickable(By.name("idExpiryDateMonthInput")));
+        ExpiryMonth.click();
+        ExpiryMonth.sendKeys(randomMonth);
+        ExpiryMonth.sendKeys(Keys.ENTER);
+        
+		Thread.sleep(3000);
+	    js.executeScript("window.scrollTo(0,200)");
+	    Thread.sleep(3000);
+
+        String randomYear = ExpiryYearss[rand.nextInt(ExpiryYearss.length)];
+        WebElement ExpiryYear = wait.until(ExpectedConditions.elementToBeClickable(By.name("idExpiryDateYearInput")));
+        ExpiryYear.click();
+        ExpiryYear.sendKeys(randomYear);
+        ExpiryYear.sendKeys(Keys.ENTER);
+
+		Thread.sleep(3000);
+        WebElement ContactEmail = driver.findElement(By.name("contact.email"));
+        ContactEmail.sendKeys("Mousaabukhaled8@gmail.com");
+
+		Thread.sleep(3000);
+		
+		
+		
+		WebElement inputPhoneCode = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-6")));
+		inputPhoneCode.click();
+		
+		Thread.sleep(2000);
+		inputPhoneCode.click();
+
+		List<WebElement> options = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//li[contains(@class, 'MuiAutocomplete-option')]")));
+
+		for (WebElement option : options) {
+		    if (option.getText().contains("+962")) {
+		        option.click();   
+		        break;
+		    }
 		}
 
-		Thread.sleep(3000);
-		WebElement ContactPhoneNumber = driver.findElement(By.name("contact.phone"));
-		ContactPhoneNumber.sendKeys("782888006");
+		
 
-		WebElement continueButton = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//button[@id='mui-17' and .//span[text()='Continue']]")));
-		continueButton.click();
 
-	}
+        WebElement ContactPhoneNumber = driver.findElement(By.name("contact.phone"));
+        ContactPhoneNumber.sendKeys("782888006");
 
-	@Test(priority = 8)
+        WebElement continueButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='mui-17' and .//span[text()='Continue']]")));
+        continueButton.click();
+    }
+
+	
+	@Test(priority = 8, enabled = false)
 	public void HotelSearch() throws InterruptedException {
 
 		WebElement Stays = driver.findElement(By.id("tab-hotels"));
@@ -369,7 +383,7 @@ public class TestCases extends DataTestCase {
 
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 9, enabled = false)
 	public void HotelBookingProcess() throws InterruptedException {
 
 		driver.get("https://www.almosafer.com/en/hotel/details/atg/hyde-hotel-dubai-1999925?checkin=09-07-2025&checkout=10-07-2025&rooms=2_adult");
@@ -385,7 +399,6 @@ public class TestCases extends DataTestCase {
         Thread.sleep(2000);
 
 	    js.executeScript("window.scrollTo(0,500)");
-
 		WebElement ContactFirstName = driver.findElement(By.id("contact.firstname"));
 		ContactFirstName.sendKeys("Mousa");
 		Thread.sleep(1000);
@@ -413,13 +426,24 @@ public class TestCases extends DataTestCase {
 		    }
 		}
 
+		
+		
 		WebElement contactPhoneNumber = driver.findElement(By.id("contact.phoneNumber"));
 		contactPhoneNumber.sendKeys("782888006");
-		 
-		Thread.sleep(2000);
 		
-		WebElement element = driver.findElement(By.id("mui-3"));
-		element.click();
+		 js.executeScript("window.scrollTo(0,700)");
+		Thread.sleep(4000);
+		
+		WebElement Countine = driver.findElement(By.id("mui-3"));
+		Countine.click();
+
+		Thread.sleep(4000);
+		
+		
+	}
+		@Test(priority = 10, enabled = false)
+		public void CheckOutHotal() throws InterruptedException {
+			
 
 		WebElement CardNumber = driver.findElement(By.name("cardNumber"));
 		CardNumber.sendKeys("4475 2210 0365 1981");
@@ -430,15 +454,28 @@ public class TestCases extends DataTestCase {
 		
 		WebElement Cvv = driver.findElement(By.name("cvv"));
 		Cvv.sendKeys("2536");
-		WebElement NameInput = driver.findElement(By.xpath("//input[@id='outlined-basic']"));
+		
+		Thread.sleep(1000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		js.executeScript("window.scrollTo(0,600)");
+		Thread.sleep(1000);
+
+		WebElement NameInput = driver.findElement(By.xpath("//input[@id='outlined-basic' and @testid='name']"));
 		NameInput.sendKeys("Mousa Abukhald");
+		
+		Thread.sleep(1000);
+
+		js.executeScript("window.scrollTo(0,700)");
+		
+		Thread.sleep(2000);
 		
 		WebElement PayNowButton = driver.findElement(By.id("mui-4"));
 		PayNowButton.click();
 	
 	}
 
-	@Test(priority = 10, enabled = false)
+	@Test(priority = 11, enabled = false)
 	public void FiltersSearchResults() throws InterruptedException {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -457,7 +494,7 @@ public class TestCases extends DataTestCase {
 
 	}
 
-	@Test(priority = 11, enabled = false)
+	@Test(priority = 12, enabled = false)
 	public void PromotionalOffers() throws InterruptedException {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -474,7 +511,7 @@ public class TestCases extends DataTestCase {
 
 	}
 
-	@Test(priority = 12, enabled = false)
+	@Test(priority = 13, enabled = false)
 	public void CustomerSupport() throws InterruptedException {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
