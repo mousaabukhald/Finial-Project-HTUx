@@ -1,159 +1,186 @@
-Final Project Test Cases - Travel Booking Automation 🚀
 
+---
 
-📜 Project Overview
-This repository contains an automated test suite designed for a web-based travel booking platform using Selenium WebDriver (Java) and TestNG. The tests simulate real user interactions across various functionalities of the platform, such as account creation, login, flight and hotel booking, and customer support. The primary goal is to ensure the platform’s key features are working as expected and deliver a seamless user experience.
+# Final Project Test Cases - Travel Booking Automation 🚀
 
-⚙️ Prerequisites
-To get started, make sure you have the following tools installed:
+![Selenium Logo](https://upload.wikimedia.org/wikipedia/commons/3/33/Selenium_Logo.png)
 
-Tool	Description	Installation Link
-Java JDK	Required to run Java applications.	JDK 11 Download
-Apache Maven	Tool for managing dependencies and building Java projects.	Maven Install Guide
-Selenium WebDriver	A browser automation tool for web testing.	Selenium Downloads
-ChromeDriver	WebDriver for controlling Chrome.	ChromeDriver
-TestNG	A testing framework for Java used to run the automated tests.	TestNG is included in the pom.xml file (see below)
+## 📜 Project Overview
 
-🚀 Setup Guide
-Follow these steps to set up and run the automated tests:
+This repository contains an **automated test suite** designed for a **web-based travel booking platform** using **Selenium WebDriver** (Java) and **TestNG**. The tests simulate real user interactions in an **automated environment**, covering various functionalities such as **account creation**, **login**, **flight and hotel booking**, and **customer support**. The main objective is to **automate the testing** of the platform's key features to ensure they are working as expected and provide **scalable and repeatable tests**.
 
-Step	Description
-Clone the repository	Clone the project to your local machine and navigate to the project directory.
-Install dependencies	Run mvn clean install to install the necessary dependencies for your project.
-Run the tests	Execute the tests using mvn test and view the results.
+---
 
-🧪 Test Cases
-1. Home Page Load Test 🚀
-Description:
-This test ensures that the home page of the platform loads correctly when the URL is accessed. It also verifies that the window is maximized for proper visibility.
+## ⚙️ Prerequisites
 
-Objective:
-To confirm that the home page is accessible and displays correctly to users upon launch.
+To run the automated tests, ensure you have the following tools installed:
 
-Expected Outcome:
-The page should load successfully, with no errors, and the browser window should be maximized.
+* **Java JDK (Version 11 or Higher)**: Required for running Java applications. You can download it from [JDK 11 Download](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+* **Apache Maven**: This tool is used for managing dependencies and building Java projects. You can install it from [Maven Install Guide](https://maven.apache.org/install.html).
+* **Selenium WebDriver**: A browser automation tool used to simulate user interactions with web pages. Download it from [Selenium Downloads](https://www.selenium.dev/downloads/).
+* **ChromeDriver**: WebDriver for controlling Chrome. Download it from [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/).
+* **TestNG**: A testing framework for Java used to execute automated tests. TestNG is included in the `pom.xml` file (see below for dependency).
 
-Status:
+### TestNG Dependency
 
-Pass: If the home page is displayed correctly.
+To ensure the necessary libraries are available for your project, add the following TestNG dependency to your `pom.xml` file:
 
-Fail: If there are errors during the page load or the page does not display as expected.
+```xml
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.x</version>
+    <scope>test</scope>
+</dependency>
+```
 
-2. Multi-language Support 🌍
-Description:
-This test checks the platform’s ability to support multiple languages, particularly English and Arabic. The test will randomly select one of these languages and verify that the platform displays content in the selected language.
+---
 
-Objective:
-To ensure that users can view the platform in their preferred language and that language switching works smoothly.
+## 🚀 Setup Guide
 
-Expected Outcome:
-The page should switch to the selected language (either English or Arabic) and display relevant content.
+To set up and run the automated tests, follow these steps:
 
-Status:
+1. **Clone the repository** to your local machine and navigate to the project directory.
+2. **Install dependencies** using the following command:
 
-Pass: If the language is switched successfully.
+   ```bash
+   mvn clean install
+   ```
+3. **Run the tests** using the following command:
 
-Fail: If the platform does not switch languages or displays incorrect content.
+   ```bash
+   mvn test
+   ```
 
-3. Account Creation 🔑
-Description:
-This test simulates the account creation process. It includes entering an email address, setting a password, subscribing to the newsletter (optional), and submitting the registration form.
+The tests will be executed using **TestNG**, and you can view the results in the console or in the generated Maven reports.
 
-Objective:
-To verify that users can create a new account and that all required fields are validated.
+---
 
-Expected Outcome:
-The account should be created successfully, and a confirmation or welcome email should be sent to the user.
+## 🧪 Automated Test Cases
 
-Status:
+Here’s a breakdown of the **automated test cases** that simulate real user actions across different functionalities of the travel booking platform. The tests are automated using **Selenium WebDriver** for browser automation and **TestNG** for test management.
 
-Pass: If the account is created and a confirmation email is received.
+### 1. **Home Page Load Test 🚀**
 
-Fail: If the account is not created or there is an issue with the form submission.
+**Objective:**
+This test ensures that the **home page** of the platform loads correctly when the URL is accessed. The automation script opens the URL, maximizes the browser window, and verifies that the page loads without errors.
 
-4. Login Functionality 🔒
-Description:
-This test automates the login process for an existing account. The test enters valid credentials (email and password) and submits the form to verify successful login.
+**Expected Outcome:**
+The home page should load successfully, and the browser window should be maximized, providing a smooth user experience.
 
-Objective:
-To ensure that the platform's login functionality works as expected, allowing users to access their accounts after entering valid credentials.
+**Automation Details:**
+The test is executed by opening the URL in a browser using **Selenium WebDriver** and confirming that no loading issues occur, which is essential for user access to the site.
 
-Expected Outcome:
-The user should be logged in and redirected to the dashboard or home page.
+---
 
-Status:
+### 2. **Multi-language Support 🌍**
 
-Pass: If the user is logged in successfully.
+**Objective:**
+This test case ensures that the platform can handle multiple languages, particularly **English** and **Arabic**. The test automatically selects one of these languages and confirms that the content is displayed correctly in the chosen language.
 
-Fail: If the login fails due to incorrect credentials or a technical issue.
+**Expected Outcome:**
+The platform should display content in either English or Arabic based on the language selected by the test script.
 
-5. Password Recovery 🔑
-Description:
-This test verifies the password recovery process. It involves clicking the "Forgot Password" link, entering the registered email address, and submitting the request to reset the password.
+**Automation Details:**
+The test uses **Selenium WebDriver** to simulate a user selecting a language and checks if the page content updates accordingly, ensuring proper language handling.
 
-Objective:
-To ensure that users can recover their password if they forget it and that they receive a reset email.
+---
 
-Expected Outcome:
-A password reset email should be sent to the user's email address.
+### 3. **Account Creation 🔑**
 
-Status:
+**Objective:**
+This test automates the process of creating a new account. The test enters a valid email, sets a password, and optionally subscribes to a newsletter. It then submits the form to create the account.
 
-Pass: If the password reset email is received.
+**Expected Outcome:**
+The account should be created successfully, and a confirmation email should be sent to the provided email address.
 
-Fail: If the email is not sent or if the process fails at any stage.
+**Automation Details:**
+**Selenium WebDriver** is used to fill out the form fields with random values for the email and password, then submit the form to complete the account creation process. A success message is expected if the form is submitted successfully.
 
-6. Flight Search ✈️
-Description:
-This test automates the process of searching for a flight between Riyadh and Dubai. It inputs the departure and destination cities, selects a travel date, and initiates the search for available flights.
+---
 
-Objective:
-To confirm that the flight search feature is functional and that the platform returns available flight options.
+### 4. **Login Functionality 🔒**
 
-Expected Outcome:
-The search results should display a list of available flights for the selected route and dates.
+**Objective:**
+This test verifies the **login** functionality by automating the login process with valid credentials (email and password). The test checks if the user can log in successfully.
 
-Status:
+**Expected Outcome:**
+The user should be able to log in and be redirected to the dashboard or home page, depending on the platform’s flow.
 
-Pass: If flights are found for the specified route.
+**Automation Details:**
+Using **Selenium WebDriver**, the test inputs the email and password, submits the login form, and checks if the user is logged in and redirected to the correct page.
 
-Fail: If no flights are found or the search function does not return results.
+---
 
-7. Booking Process 🛒
-Description:
-This test verifies the flight booking process. After selecting a flight, it simulates the process of choosing a fare option, confirming prices, and proceeding with the booking.
+### 5. **Password Recovery 🔑**
 
-Objective:
-To test that the user can successfully select a flight, view prices, and proceed to the payment section.
+**Objective:**
+This test simulates the **password recovery** process. It automates clicking the "Forgot Password" link, entering an email address, and submitting the request to reset the password.
 
-Expected Outcome:
-The user should be able to proceed to the booking confirmation page and check out.
+**Expected Outcome:**
+A password reset email should be sent to the user’s email address, enabling the recovery of the account.
 
-Status:
+**Automation Details:**
+The test uses **Selenium WebDriver** to fill out the email field and submit the password reset request. If successful, the user will receive a reset email to the provided address.
 
-Pass: If the user can proceed to the payment page without issues.
+---
 
-Fail: If the user encounters errors or is unable to proceed.
+### 6. **Flight Search ✈️**
 
-8. Hotel Search 🏨
-Description:
-This test ensures that the hotel search functionality works. The test involves searching for hotels in Dubai by entering the destination and selecting check-in and check-out dates.
+**Objective:**
+This test automates the **flight search** process by entering a departure city, a destination, and a travel date. The test then verifies that available flights are displayed.
 
-Objective:
-To confirm that the platform can correctly search for available hotels in the specified location.
+**Expected Outcome:**
+A list of available flights should be displayed, based on the user’s input for departure, destination, and date.
 
-Expected Outcome:
-The system should return a list of available hotels with pricing and booking options.
+**Automation Details:**
+**Selenium WebDriver** automates the selection of departure and destination airports, inputs the travel date, and ensures that the flight search results are returned as expected.
 
-Status:
+---
 
-Pass: If hotels are listed based on the search criteria.
+### 7. **Booking Process 🛒**
 
-Fail: If no hotels are returned or there is an issue with the search.
+**Objective:**
+This test automates the **flight booking process**. After selecting a flight, the test verifies that the user can confirm the fare and proceed to the booking confirmation page.
 
-📋 Conclusion
-This project demonstrates the power of Selenium WebDriver for automating critical user interactions on a travel booking platform. From account creation and login to searching for flights and hotels, every critical user flow is tested to ensure the application’s reliability and user experience.
+**Expected Outcome:**
+The user should successfully proceed to the booking confirmation page and be ready for payment.
 
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+**Automation Details:**
+The test uses **Selenium WebDriver** to simulate a user selecting a flight, confirming the fare, and proceeding through the booking stages to reach the confirmation page.
+
+---
+
+### 8. **Hotel Search 🏨**
+
+**Objective:**
+This test ensures that the **hotel search** functionality works by searching for hotels in a specific destination (Dubai). The test verifies that the list of hotels is correctly displayed based on the selected dates.
+
+**Expected Outcome:**
+A list of available hotels with relevant details (e.g., price, location, availability) should be displayed.
+
+**Automation Details:**
+The test uses **Selenium WebDriver** to enter the destination and check-in/check-out dates, ensuring that the results are returned and displayed on the page.
+
+---
+
+## 📋 Conclusion
+
+This project demonstrates the power of **Selenium WebDriver** for automating **critical user interactions** on a travel booking platform. Each test case simulates a real user journey from **account creation** to **flight and hotel bookings**. The focus is on verifying the functionality of the core features of the platform and ensuring that the automation process runs smoothly and efficiently, providing **scalable and repeatable tests** for ongoing regression testing.
+
+---
+
+## 📝 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+### Final Thoughts:
+
+* **Clear Structure:** This README provides a clean and professional structure for each **automated test**, explaining its objective and expected outcome clearly.
+* **Focus on Automation:** Emphasizes that the tests are **automated** using **Selenium** and **TestNG**, and provides a detailed breakdown of each test case.
+* **User-friendly:** The information is well-organized and designed to be easy to follow for both technical and non-technical users.
+
+---
 
