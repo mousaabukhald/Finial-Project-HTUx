@@ -91,7 +91,9 @@ public class TestCases extends DataTestCase {
 		Thread.sleep(3000);
 
 		System.out.println("Created and signed in successfully with: " + SelectedEmail);
+		
 	}
+	
 
 	@Test(priority = 3, enabled = false)
 	public void LoginAccount() throws InterruptedException {
@@ -112,7 +114,9 @@ public class TestCases extends DataTestCase {
 		SignInButton.click();
         
 		Thread.sleep(3000);
+		
 	}
+	
 
 	@Test(priority = 4, enabled = false)
 	public void ForgetPassward() throws InterruptedException {
@@ -181,31 +185,26 @@ public class TestCases extends DataTestCase {
 	
 	
 	@Test(priority = 6)
-	public void ProcessCheckOut() throws InterruptedException {
-		Thread.sleep(9000);
-		WebElement CheckPricesButton = driver
-				.findElement(By.xpath("//button[@data-testid='Group0__CheckPricesButton']"));
+	public void BookingProcess() throws InterruptedException {
+		Thread.sleep(12000);
+		WebElement CheckPricesButton = driver.findElement(By.xpath("//button[@data-testid='Group0__CheckPricesButton']"));
 		CheckPricesButton.click();
 
 		Thread.sleep(3000);
 
-		WebElement SelectButton = driver
-				.findElement(By.xpath("//button[@data-testid='FareFamilyCard__Option0__SelectCTA']"));
+		WebElement SelectButton = driver.findElement(By.xpath("//button[@data-testid='FareFamilyCard__Option0__SelectCTA']"));
 		SelectButton.click();
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0,100)");
 
-		WebElement CheckPriceButton = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//button[@data-testid='Group0__CheckPricesButton']")));
+		WebElement CheckPriceButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@data-testid='Group0__CheckPricesButton']")));
 		CheckPriceButton.click();
 
-		WebElement SelectToButton = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//button[@data-testid='FareFamilyCard__Option0__SelectCTA']")));
+		WebElement SelectToButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@data-testid='FareFamilyCard__Option0__SelectCTA']")));
 		SelectToButton.click();
 
-		WebElement ContinueButton = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//button[@data-testid='SummaryPrice__Continue_Button']")));
+		WebElement ContinueButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@data-testid='SummaryPrice__Continue_Button']")));
 		ContinueButton.click();
 
 		Thread.sleep(4000);
@@ -213,10 +212,9 @@ public class TestCases extends DataTestCase {
 	}
 
 	@Test(priority = 7)
-	public void CheckOut() throws InterruptedException {
+	public void SubmitInformation() throws InterruptedException {
 
-		WebElement titleMr = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//div[@data-testid='PaxForm__ADT1__TitleOption__Mr']")));
+		WebElement titleMr = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-testid='PaxForm__ADT1__TitleOption__Mr']")));
 		titleMr.click();
 
 		Thread.sleep(2000);
@@ -246,7 +244,7 @@ public class TestCases extends DataTestCase {
 		
 
     @Test(priority = 8)
-    public void CheckOutCombl() throws InterruptedException {
+    public void CheckOutProcess() throws InterruptedException {
     
         String RandomDay = Days[rand.nextInt(Days.length)];
         WebElement DayInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-2")));
@@ -281,72 +279,14 @@ public class TestCases extends DataTestCase {
         nationality.sendKeys(Keys.ENTER);
         
 		Thread.sleep(3000);
+	    js.executeScript("window.scrollTo(0,0)");
+	   
 
-        WebElement PassportNumber = driver.findElement(By.id("PaxForm__ADT1__IdNumber"));
-        PassportNumber.sendKeys("T491520");
 
-		Thread.sleep(3000);
-		
-        WebElement IssuingCountry = driver.findElement(By.name("issuingCountryInput"));
-        IssuingCountry.click();
-        IssuingCountry.sendKeys("Jordan");
-        IssuingCountry.sendKeys(Keys.ENTER);
-
-		Thread.sleep(3000);
-        String randomDay = ExpiryDays[rand.nextInt(ExpiryDays.length)];
-        WebElement ExpiryDay = wait.until(ExpectedConditions.elementToBeClickable(By.name("idExpiryDateDayInput")));
-        ExpiryDay.click();
-        ExpiryDay.sendKeys(randomDay);
-        ExpiryDay.sendKeys(Keys.ENTER);
-		Thread.sleep(3000);
-
-        String randomMonth = ExpiryMonths[rand.nextInt(ExpiryMonths.length)];
-        WebElement ExpiryMonth = wait.until(ExpectedConditions.elementToBeClickable(By.name("idExpiryDateMonthInput")));
-        ExpiryMonth.click();
-        ExpiryMonth.sendKeys(randomMonth);
-        ExpiryMonth.sendKeys(Keys.ENTER);
-        
-		Thread.sleep(3000);
-	    js.executeScript("window.scrollTo(0,200)");
-	    Thread.sleep(3000);
-
-        String randomYear = ExpiryYearss[rand.nextInt(ExpiryYearss.length)];
-        WebElement ExpiryYear = wait.until(ExpectedConditions.elementToBeClickable(By.name("idExpiryDateYearInput")));
-        ExpiryYear.click();
-        ExpiryYear.sendKeys(randomYear);
-        ExpiryYear.sendKeys(Keys.ENTER);
-
-		Thread.sleep(3000);
-        WebElement ContactEmail = driver.findElement(By.name("contact.email"));
-        ContactEmail.sendKeys("Mousaabukhaled8@gmail.com");
-
-		Thread.sleep(3000);
 		
 		
 		
-		WebElement inputPhoneCode = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-6")));
-		inputPhoneCode.click();
-		
-		Thread.sleep(2000);
-		inputPhoneCode.click();
 
-		List<WebElement> options = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//li[contains(@class, 'MuiAutocomplete-option')]")));
-
-		for (WebElement option : options) {
-		    if (option.getText().contains("+962")) {
-		        option.click();   
-		        break;
-		    }
-		}
-
-		
-
-
-        WebElement ContactPhoneNumber = driver.findElement(By.name("contact.phone"));
-        ContactPhoneNumber.sendKeys("782888006");
-
-        WebElement continueButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='mui-17' and .//span[text()='Continue']]")));
-        continueButton.click();
     }
 
 	
@@ -418,6 +358,7 @@ public class TestCases extends DataTestCase {
 		inputPhoneCode.click();
 
 		List<WebElement> options = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//li[contains(@class, 'MuiAutocomplete-option')]")));
+		Thread.sleep(2000);
 
 		for (WebElement option : options) {
 		    if (option.getText().contains("+962")) {
@@ -429,6 +370,7 @@ public class TestCases extends DataTestCase {
 		
 		
 		WebElement contactPhoneNumber = driver.findElement(By.id("contact.phoneNumber"));
+		Thread.sleep(300);
 		contactPhoneNumber.sendKeys("782888006");
 		
 		 js.executeScript("window.scrollTo(0,700)");

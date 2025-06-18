@@ -5,7 +5,8 @@
     <classes>
       <class name="TestCase.FinialProjecrt.TestCases">
         <methods>
-          <include name="CheckOutCombl"/>
+          <include name="CheckOutProcess"/>
+          <include name="SubmitInformation"/>
           <include name="HomePage"/>
         </methods>
       </class> <!-- TestCase.FinialProjecrt.TestCases -->
