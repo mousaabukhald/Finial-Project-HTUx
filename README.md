@@ -1,252 +1,159 @@
+Final Project Test Cases - Travel Booking Automation 🚀
 
 
----
+📜 Project Overview
+This repository contains an automated test suite designed for a web-based travel booking platform using Selenium WebDriver (Java) and TestNG. The tests simulate real user interactions across various functionalities of the platform, such as account creation, login, flight and hotel booking, and customer support. The primary goal is to ensure the platform’s key features are working as expected and deliver a seamless user experience.
 
-# Final Project Test Cases - Travel Booking Automation 🚀
+⚙️ Prerequisites
+To get started, make sure you have the following tools installed:
 
-![Selenium Logo](https://upload.wikimedia.org/wikipedia/commons/3/33/Selenium_Logo.png)
+Tool	Description	Installation Link
+Java JDK	Required to run Java applications.	JDK 11 Download
+Apache Maven	Tool for managing dependencies and building Java projects.	Maven Install Guide
+Selenium WebDriver	A browser automation tool for web testing.	Selenium Downloads
+ChromeDriver	WebDriver for controlling Chrome.	ChromeDriver
+TestNG	A testing framework for Java used to run the automated tests.	TestNG is included in the pom.xml file (see below)
 
-## 📜 Overview
+🚀 Setup Guide
+Follow these steps to set up and run the automated tests:
 
-This repository contains **automated test cases** for a **web-based travel booking platform** built using **Selenium WebDriver** (Java). The tests simulate user interactions and cover core functionalities of the platform, such as:
+Step	Description
+Clone the repository	Clone the project to your local machine and navigate to the project directory.
+Install dependencies	Run mvn clean install to install the necessary dependencies for your project.
+Run the tests	Execute the tests using mvn test and view the results.
 
-* **Account creation**
-* **Login and password recovery**
-* **Flight search and booking**
-* **Hotel search and booking**
-* **Customer support**
+🧪 Test Cases
+1. Home Page Load Test 🚀
+Description:
+This test ensures that the home page of the platform loads correctly when the URL is accessed. It also verifies that the window is maximized for proper visibility.
 
----
+Objective:
+To confirm that the home page is accessible and displays correctly to users upon launch.
 
-## ⚙️ Prerequisites
+Expected Outcome:
+The page should load successfully, with no errors, and the browser window should be maximized.
 
-Before running the test cases, ensure you have the following tools installed:
+Status:
 
-1. **Java JDK (Version 11 or Higher)**
+Pass: If the home page is displayed correctly.
 
-   * Download from: [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+Fail: If there are errors during the page load or the page does not display as expected.
 
-2. **Apache Maven**
+2. Multi-language Support 🌍
+Description:
+This test checks the platform’s ability to support multiple languages, particularly English and Arabic. The test will randomly select one of these languages and verify that the platform displays content in the selected language.
 
-   * Download from: [Maven](https://maven.apache.org/install.html)
+Objective:
+To ensure that users can view the platform in their preferred language and that language switching works smoothly.
 
-3. **Selenium WebDriver 3.x or Higher**
+Expected Outcome:
+The page should switch to the selected language (either English or Arabic) and display relevant content.
 
-   * Install via Maven or download from [Selenium Downloads](https://www.selenium.dev/downloads/).
+Status:
 
-4. **ChromeDriver**
+Pass: If the language is switched successfully.
 
-   * Download from [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/).
+Fail: If the platform does not switch languages or displays incorrect content.
 
-5. **TestNG**
+3. Account Creation 🔑
+Description:
+This test simulates the account creation process. It includes entering an email address, setting a password, subscribing to the newsletter (optional), and submitting the registration form.
 
-   * Install via Maven: `testng:testng:7.x`
+Objective:
+To verify that users can create a new account and that all required fields are validated.
 
----
+Expected Outcome:
+The account should be created successfully, and a confirmation or welcome email should be sent to the user.
 
-## 🚀 Setup Guide
+Status:
 
-1. Clone this repository to your local machine:
+Pass: If the account is created and a confirmation email is received.
 
-```bash
-git clone https://github.com/yourusername/FinalProjectTestCases.git
-cd FinalProjectTestCases
-```
+Fail: If the account is not created or there is an issue with the form submission.
 
-2. Install required dependencies using Maven:
+4. Login Functionality 🔒
+Description:
+This test automates the login process for an existing account. The test enters valid credentials (email and password) and submits the form to verify successful login.
 
-```bash
-mvn clean install
-```
+Objective:
+To ensure that the platform's login functionality works as expected, allowing users to access their accounts after entering valid credentials.
 
-3. Run the test cases using TestNG:
+Expected Outcome:
+The user should be logged in and redirected to the dashboard or home page.
 
-```bash
-mvn test
-```
+Status:
 
----
+Pass: If the user is logged in successfully.
 
-## 🧪 Test Cases
+Fail: If the login fails due to incorrect credentials or a technical issue.
 
-### 1. **Home Page Test**
+5. Password Recovery 🔑
+Description:
+This test verifies the password recovery process. It involves clicking the "Forgot Password" link, entering the registered email address, and submitting the request to reset the password.
 
-This test case ensures that the travel booking platform's home page loads successfully. It navigates to the given URL and maximizes the window.
+Objective:
+To ensure that users can recover their password if they forget it and that they receive a reset email.
 
-```java
-@Test(priority = 1)
-public void HomePage() {
-    driver.get(URL);
-    driver.manage().window().maximize();
-}
-```
+Expected Outcome:
+A password reset email should be sent to the user's email address.
 
-The test simply checks if the URL loads correctly and the browser window opens in full size, which is necessary for ensuring the application starts properly.
+Status:
 
----
+Pass: If the password reset email is received.
 
-### 2. **Multi-language Website**
+Fail: If the email is not sent or if the process fails at any stage.
 
-In this test case, we verify that the platform supports multiple languages (English and Arabic). It randomly selects either the English or Arabic version of the website.
+6. Flight Search ✈️
+Description:
+This test automates the process of searching for a flight between Riyadh and Dubai. It inputs the departure and destination cities, selects a travel date, and initiates the search for available flights.
 
-```java
-@Test(priority = 2)
-public void MultiLanguageUsing() throws InterruptedException {
-    String[] WebsitesLanguages = { "https://www.almosafer.com/en", "https://www.almosafer.com/ar" };
-    int RandomLanguages = rand.nextInt(WebsitesLanguages.length);
-    driver.get(WebsitesLanguages[RandomLanguages]);
-}
-```
+Objective:
+To confirm that the flight search feature is functional and that the platform returns available flight options.
 
-Here, a random language (either English or Arabic) is chosen, and the respective version of the website is loaded. This ensures that the multi-language functionality works as expected.
+Expected Outcome:
+The search results should display a list of available flights for the selected route and dates.
 
----
+Status:
 
-### 3. **Account Creation**
+Pass: If flights are found for the specified route.
 
-This test case automates the process of creating a new account. It clicks the "Create an account" link, fills in randomly generated email and password fields, and submits the form.
+Fail: If no flights are found or the search function does not return results.
 
-```java
-@Test(priority = 3)
-public void CreateAccount() throws InterruptedException {
-    WebElement Login = driver.findElement(By.cssSelector(".MuiButtonBase-root"));
-    Login.click();
-    WebElement CreatEmail = driver.findElement(By.linkText("Create an account"));
-    CreatEmail.click();
-    // More code to fill the form...
-}
-```
+7. Booking Process 🛒
+Description:
+This test verifies the flight booking process. After selecting a flight, it simulates the process of choosing a fare option, confirming prices, and proceeding with the booking.
 
-This test ensures that a user can successfully create an account on the platform with randomly generated credentials.
+Objective:
+To test that the user can successfully select a flight, view prices, and proceed to the payment section.
 
----
+Expected Outcome:
+The user should be able to proceed to the booking confirmation page and check out.
 
-### 4. **Login Account**
+Status:
 
-In this test case, we log in using an existing account. The test inputs an email and password, clicks the "Sign in" button, and waits for the login process to complete.
+Pass: If the user can proceed to the payment page without issues.
 
-```java
-@Test(priority = 4)
-public void LoginAccount() throws InterruptedException {
-    WebElement Login = driver.findElement(By.cssSelector(".MuiButtonBase-root"));
-    Login.click();
-    WebElement Email = driver.findElement(By.id("InputField_email"));
-    Email.sendKeys("user@example.com");
-    WebElement Password = driver.findElement(By.id("InputField_password"));
-    Password.sendKeys("password123");
-    // Submit login form...
-}
-```
+Fail: If the user encounters errors or is unable to proceed.
 
-This test automates the login process to check whether users can successfully sign in with their credentials.
+8. Hotel Search 🏨
+Description:
+This test ensures that the hotel search functionality works. The test involves searching for hotels in Dubai by entering the destination and selecting check-in and check-out dates.
 
----
+Objective:
+To confirm that the platform can correctly search for available hotels in the specified location.
 
-### 5. **Forgot Password**
+Expected Outcome:
+The system should return a list of available hotels with pricing and booking options.
 
-This test verifies that the "Forgot your password?" functionality works. The test simulates the user entering their email and clicking "Continue" to reset their password.
+Status:
 
-```java
-@Test(priority = 5)
-public void ForgetPassword() throws InterruptedException {
-    WebElement forgotPasswordLink = driver.findElement(By.xpath("//div[text()='Forgot your password?']"));
-    forgotPasswordLink.click();
-    WebElement SendEmail = driver.findElement(By.id("InputField_email"));
-    SendEmail.sendKeys("user@example.com");
-    WebElement continueButton = driver.findElement(By.xpath("//span[text()='Continue']"));
-    continueButton.click();
-}
-```
+Pass: If hotels are listed based on the search criteria.
 
-The test checks the password recovery flow by clicking on the "Forgot Password" link and simulating the email submission process.
+Fail: If no hotels are returned or there is an issue with the search.
 
----
+📋 Conclusion
+This project demonstrates the power of Selenium WebDriver for automating critical user interactions on a travel booking platform. From account creation and login to searching for flights and hotels, every critical user flow is tested to ensure the application’s reliability and user experience.
 
-### 6. **Flight Search**
-
-In this case, we automate the process of searching for flights between Riyadh and Dubai. The test selects airports, sets a travel date, and performs the search.
-
-```java
-@Test(priority = 6)
-public void FlightSearch() throws InterruptedException {
-    WebElement FlightOrigin = driver.findElement(By.id("FlightHome__AirportPicker__OriginSearchInput"));
-    FlightOrigin.click();
-    WebElement RiyadhAirport = driver.findElement(By.className("alm-desktop-7buqd5"));
-    RiyadhAirport.click();
-    WebElement FlightDestination = driver.findElement(By.id("FlightHome__AirportPicker__DestinationSearchInput"));
-    FlightDestination.sendKeys("Dubai, United Arab Emirates");
-    // More code for date selection and search...
-}
-```
-
-This test ensures that the flight search functionality works, including selecting origin and destination airports and inputting a travel date.
-
----
-
-### 7. **Booking Process**
-
-This test simulates the process of booking a flight. After selecting a flight option, it checks prices, selects a fare family, and proceeds with booking.
-
-```java
-@Test(priority = 7)
-public void BookingProcess() throws InterruptedException {
-    WebElement CheckPricesButton = driver.findElement(By.xpath("//button[@data-testid='Group0__CheckPricesButton']"));
-    CheckPricesButton.click();
-    // More code for selecting flight and confirming booking...
-}
-```
-
-The test automates the booking process, ensuring users can proceed to the booking stage after selecting a flight.
-
----
-
-### 8. **Hotel Search**
-
-This test case searches for hotels in Dubai. It enters the destination, selects check-in dates, and triggers the search.
-
-```java
-@Test(priority = 8)
-public void HotelSearch() throws InterruptedException {
-    WebElement Stays = driver.findElement(By.id("tab-hotels"));
-    Stays.click();
-    WebElement Hotels = driver.findElement(By.id("DesktopSearchWidget_Destination_InputField_Test_Id"));
-    Hotels.sendKeys("Dubai");
-    // More code for selecting check-in dates and searching...
-}
-```
-
-It automates the hotel search, ensuring that users can find available accommodations in their desired destination.
-
----
-
-### 9. **Customer Support**
-
-This test simulates the user filling out a customer support form to report an issue with hotel booking confirmation. It enters personal details and submits the query.
-
-```java
-@Test(priority = 9)
-public void CustomerSupport() throws InterruptedException {
-    WebElement ContactUsLink = driver.findElement(By.linkText("Contact Us"));
-    ContactUsLink.click();
-    WebElement FullName = driver.findElement(By.name("full_name"));
-    FullName.sendKeys("Mousa Nedal Abukhaled");
-    // More code for submitting the support request...
-}
-```
-
-This test ensures that users can contact customer support, submit their details, and report issues or inquiries.
-
----
-
-## 📋 Conclusion
-
-This project covers a comprehensive set of functionalities for testing a travel booking platform, from account creation to booking flights and hotels, as well as interacting with customer support.
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
+📝 License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
