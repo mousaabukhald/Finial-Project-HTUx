@@ -6,6 +6,7 @@
       <class name="TestCase.FinialProjecrt.TestCases">
         <methods>
           <include name="CheckOutProcess"/>
+          <include name="BookingProcess"/>
           <include name="SubmitInformation"/>
           <include name="HomePage"/>
         </methods>
