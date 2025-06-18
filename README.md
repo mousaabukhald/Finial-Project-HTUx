@@ -3,7 +3,7 @@
 
 # Final Project Test Cases - Travel Booking Automation 🚀
 
-![Selenium Logo](https://upload.wikimedia.org/wikipedia/commons/3/33/Selenium_Logo.png)
+
 
 ## 📜 Project Overview
 
