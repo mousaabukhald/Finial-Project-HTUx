@@ -32,18 +32,44 @@ public class TestCases extends DataTestCase {
 		driver.manage().window().maximize();
 
 	}
+	
+	
+	@Test(priority = 1,enabled = false)
+	public void LoginAccount() throws InterruptedException {
 
-	@Test(priority = 1, enabled = false, invocationCount = 5)
+		WebElement Login = driver.findElement(By.cssSelector(".MuiButtonBase-root.alm-desktop-1nxh3l"));
+		Login.click();
+
+		WebElement ClickEmail = driver.findElement(By.id("tab-tab-1"));
+		ClickEmail.click();
+
+		WebElement Email = driver.findElement(By.id("InputField_email"));
+		Email.sendKeys("Mousaabukhaled8@gmail.com");
+
+		WebElement Password = driver.findElement(By.id("InputField_password"));
+		Password.sendKeys("MOuss1234#");
+
+		WebElement SignInButton = driver.findElement(By.id("mui-7"));
+		SignInButton.click();
+        
+		Thread.sleep(3000);
+		
+		
+	}
+	
+	
+	@Test(priority = 2, invocationCount = 5,enabled = false)
 	public void MultiLanguageUsing() throws InterruptedException {
 
 		String[] WebsitesLanguages = { "https://www.almosafer.com/en", "https://www.almosafer.com/ar" };
 		int RandomLanguages = rand.nextInt(WebsitesLanguages.length);
 		Thread.sleep(2000);
-		driver.get(WebsitesLanguages[RandomLanguages]);
+		driver.get(WebsitesLanguages[RandomLanguages]); 
 
 	}
+	
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 3, enabled = false)
 	public void CreateAccount() throws InterruptedException {
 
 		WebElement Login = driver.findElement(By.cssSelector(".MuiButtonBase-root.alm-desktop-1nxh3l"));
@@ -95,27 +121,7 @@ public class TestCases extends DataTestCase {
 	}
 	
 
-	@Test(priority = 3, enabled = false)
-	public void LoginAccount() throws InterruptedException {
 
-		WebElement Login = driver.findElement(By.cssSelector(".MuiButtonBase-root.alm-desktop-1nxh3l"));
-		Login.click();
-
-		WebElement ClickEmail = driver.findElement(By.id("tab-tab-1"));
-		ClickEmail.click();
-
-		WebElement Email = driver.findElement(By.id("InputField_email"));
-		Email.sendKeys("Mousaabukhaled8@gmail.com");
-
-		WebElement Password = driver.findElement(By.id("InputField_password"));
-		Password.sendKeys("MOuss1234#");
-
-		WebElement SignInButton = driver.findElement(By.xpath("//span[text()='Sign in']"));
-		SignInButton.click();
-        
-		Thread.sleep(3000);
-		
-	}
 	
 
 	@Test(priority = 4, enabled = false)
@@ -140,7 +146,7 @@ public class TestCases extends DataTestCase {
 	}
 	
 	
-	@Test(priority = 5)
+	@Test(priority = 5, enabled = false)
 	public void FlightSearch() throws InterruptedException {
 
 		WebElement FlightOrigin = driver.findElement(By.id("FlightHome__AirportPicker__OriginSearchInput"));
@@ -184,7 +190,7 @@ public class TestCases extends DataTestCase {
 
 	
 	
-	@Test(priority = 6)
+	@Test(priority = 6, enabled = false)
 	public void BookingProcess() throws InterruptedException {
 		Thread.sleep(12000);
 		WebElement CheckPricesButton = driver.findElement(By.xpath("//button[@data-testid='Group0__CheckPricesButton']"));
@@ -210,8 +216,9 @@ public class TestCases extends DataTestCase {
 		Thread.sleep(4000);
 
 	}
+	
 
-	@Test(priority = 7)
+	@Test(priority = 7, enabled = false)
 	public void SubmitInformation() throws InterruptedException {
 
 		WebElement titleMr = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-testid='PaxForm__ADT1__TitleOption__Mr']")));
@@ -243,7 +250,7 @@ public class TestCases extends DataTestCase {
 	}
 		
 
-    @Test(priority = 8)
+    @Test(priority = 8,enabled = false)
     public void CheckOutProcess() throws InterruptedException {
     
         String RandomDay = Days[rand.nextInt(Days.length)];
@@ -279,13 +286,7 @@ public class TestCases extends DataTestCase {
         nationality.sendKeys(Keys.ENTER);
         
 		Thread.sleep(3000);
-	    js.executeScript("window.scrollTo(0,0)");
-	   
-
-
-		
-		
-		
+	    js.executeScript("window.scrollTo(0,0)");	
 
     }
 
@@ -330,11 +331,11 @@ public class TestCases extends DataTestCase {
 		WebElement hotelName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[text()='Hyde Hotel Dubai']")));
 	    hotelName.click();
 
-	    Thread.sleep(2000);
+	    Thread.sleep(6000);
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 	    js.executeScript("window.scrollTo(0,800)");
-        Thread.sleep(2000);
-	    WebElement bookNowButton = driver.findElement(By.id("mui-16"));
+        Thread.sleep(4000);
+	    WebElement bookNowButton = driver.findElement(By.id("mui-13"));
 	    bookNowButton.click();
         Thread.sleep(2000);
 
@@ -383,6 +384,8 @@ public class TestCases extends DataTestCase {
 		
 		
 	}
+	
+	
 		@Test(priority = 10, enabled = false)
 		public void CheckOutHotal() throws InterruptedException {
 			
@@ -417,6 +420,7 @@ public class TestCases extends DataTestCase {
 	
 	}
 
+		
 	@Test(priority = 11, enabled = false)
 	public void FiltersSearchResults() throws InterruptedException {
 
@@ -436,6 +440,7 @@ public class TestCases extends DataTestCase {
 
 	}
 
+	
 	@Test(priority = 12, enabled = false)
 	public void PromotionalOffers() throws InterruptedException {
 
@@ -443,6 +448,7 @@ public class TestCases extends DataTestCase {
 
 		js.executeScript("window.scrollTo(0,400)");
 
+		
 		Thread.sleep(3000);
 
 		WebElement viewAllLink = driver.findElement(By.xpath("//a[text()='View all']"));
@@ -452,8 +458,10 @@ public class TestCases extends DataTestCase {
 		js.executeScript("window.scrollTo(0,600)");
 
 	}
+	
+	
 
-	@Test(priority = 13, enabled = false)
+	@Test(priority = 13,enabled = false)
 	public void CustomerSupport() throws InterruptedException {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
