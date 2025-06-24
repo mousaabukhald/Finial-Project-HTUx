@@ -5,6 +5,7 @@
     <classes>
       <class name="TestCase.FinialProjecrt.TestCases">
         <methods>
+          <include name="PromotionalOffers"/>
           <include name="HotelBookingProcess"/>
           <include name="CheckOutHotal"/>
           <include name="HomePage"/>

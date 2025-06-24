@@ -34,7 +34,8 @@ public class TestCases extends DataTestCase {
 	}
 	
 	
-	@Test(priority = 1,enabled = false)
+	
+	@Test(priority = 1)
 	public void LoginAccount() throws InterruptedException {
 
 		WebElement Login = driver.findElement(By.cssSelector(".MuiButtonBase-root.alm-desktop-1nxh3l"));
@@ -58,20 +59,20 @@ public class TestCases extends DataTestCase {
 	}
 	
 	
-	@Test(priority = 2, invocationCount = 5,enabled = false)
+	@Test(priority = 2, invocationCount = 5)
 	public void MultiLanguageUsing() throws InterruptedException {
 
 		String[] WebsitesLanguages = { "https://www.almosafer.com/en", "https://www.almosafer.com/ar" };
 		int RandomLanguages = rand.nextInt(WebsitesLanguages.length);
-		Thread.sleep(2000);
+		Thread.sleep(500);
 		driver.get(WebsitesLanguages[RandomLanguages]); 
-
+		Thread.sleep(2000);
 	}
 	
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3,enabled = false)
 	public void CreateAccount() throws InterruptedException {
-
+		driver.get(URL);
 		WebElement Login = driver.findElement(By.cssSelector(".MuiButtonBase-root.alm-desktop-1nxh3l"));
 		Login.click();
 
@@ -117,6 +118,7 @@ public class TestCases extends DataTestCase {
 		Thread.sleep(3000);
 
 		System.out.println("Created and signed in successfully with: " + SelectedEmail);
+		Thread.sleep(2000);
 		
 	}
 	
@@ -124,9 +126,9 @@ public class TestCases extends DataTestCase {
 
 	
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4,enabled = false)
 	public void ForgetPassward() throws InterruptedException {
-
+		driver.get(URL);
 		WebElement Login = driver.findElement(By.cssSelector(".MuiButtonBase-root.alm-desktop-1nxh3l"));
 		Login.click();
 		Thread.sleep(2000);
@@ -146,7 +148,7 @@ public class TestCases extends DataTestCase {
 	}
 	
 	
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5,enabled = false)
 	public void FlightSearch() throws InterruptedException {
 
 		WebElement FlightOrigin = driver.findElement(By.id("FlightHome__AirportPicker__OriginSearchInput"));
@@ -186,11 +188,12 @@ public class TestCases extends DataTestCase {
 
 		WebElement Search = driver.findElement(By.id("mui-1"));
 		Search.click();
+		
 	}
 
 	
 	
-	@Test(priority = 6, enabled = false)
+	@Test(priority = 6,enabled = false)
 	public void BookingProcess() throws InterruptedException {
 		Thread.sleep(12000);
 		WebElement CheckPricesButton = driver.findElement(By.xpath("//button[@data-testid='Group0__CheckPricesButton']"));
@@ -218,7 +221,7 @@ public class TestCases extends DataTestCase {
 	}
 	
 
-	@Test(priority = 7, enabled = false)
+	@Test(priority = 7,enabled = false )
 	public void SubmitInformation() throws InterruptedException {
 
 		WebElement titleMr = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-testid='PaxForm__ADT1__TitleOption__Mr']")));
@@ -291,9 +294,9 @@ public class TestCases extends DataTestCase {
     }
 
 	
-	@Test(priority = 8, enabled = false)
+	@Test(priority = 9)
 	public void HotelSearch() throws InterruptedException {
-
+		driver.get(URL);
 		WebElement Stays = driver.findElement(By.id("tab-hotels"));
 		Stays.click();
 
@@ -303,28 +306,28 @@ public class TestCases extends DataTestCase {
 		WebElement BookingCalendar = driver.findElement(By.id("DesktopSearchWidget_Dates_Check_In_InputField_Test_Id"));
 		BookingCalendar.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(500);
 
 		List<WebElement> AvailableDates = driver.findElements(By.className("DayPicker-Body"));
 
-		Thread.sleep(2000);
+		Thread.sleep(500);
 
 		int RandomIndex = rand.nextInt(AvailableDates.size());
 		WebElement RandomDay = AvailableDates.get(RandomIndex);
-		Thread.sleep(2000);
+		Thread.sleep(500);
 
 		String selectedDay = RandomDay.getText();
 		RandomDay.click();
-		Thread.sleep(2000);
+		Thread.sleep(500);
 
 		WebElement Search = driver.findElement(By.id("mui-4"));
 		Search.click();
 		 
-		Thread.sleep(2000);
+		Thread.sleep(500);
 
 	}
 
-	@Test(priority = 9, enabled = false)
+	@Test(priority = 10)
 	public void HotelBookingProcess() throws InterruptedException {
 
 		driver.get("https://www.almosafer.com/en/hotel/details/atg/hyde-hotel-dubai-1999925?checkin=09-07-2025&checkout=10-07-2025&rooms=2_adult");
@@ -334,32 +337,35 @@ public class TestCases extends DataTestCase {
 	    Thread.sleep(6000);
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 	    js.executeScript("window.scrollTo(0,800)");
-        Thread.sleep(4000);
+        Thread.sleep(500);
 	    WebElement bookNowButton = driver.findElement(By.id("mui-13"));
 	    bookNowButton.click();
         Thread.sleep(2000);
 
 	    js.executeScript("window.scrollTo(0,500)");
+	    
+	    WebElement mrOption = driver.findElement(By.xpath("//p[text()='Mr.']"));
+        mrOption.click();
+        Thread.sleep(1000);
 		WebElement ContactFirstName = driver.findElement(By.id("contact.firstname"));
 		ContactFirstName.sendKeys("Mousa");
 		Thread.sleep(1000);
 		WebElement ContactLastName = driver.findElement(By.id("contact.lastname"));
 		ContactLastName.sendKeys("Abukhaled");
 
-		Thread.sleep(1000);
-
 		WebElement ContactEmail = driver.findElement(By.id("contact.email"));
-		ContactEmail.sendKeys("mousaabukhaled8@gmail.com");
-		Thread.sleep(1000);
+		ContactEmail.sendKeys("");
+		
+		Thread.sleep(2000);
 
 		WebElement inputPhoneCode = wait.until(ExpectedConditions.elementToBeClickable(By.id("mui-6")));
 		inputPhoneCode.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(500);
 		inputPhoneCode.click();
 
 		List<WebElement> options = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//li[contains(@class, 'MuiAutocomplete-option')]")));
-		Thread.sleep(2000);
+		Thread.sleep(500);
 
 		for (WebElement option : options) {
 		    if (option.getText().contains("+962")) {
@@ -375,18 +381,18 @@ public class TestCases extends DataTestCase {
 		contactPhoneNumber.sendKeys("782888006");
 		
 		 js.executeScript("window.scrollTo(0,700)");
-		Thread.sleep(4000);
+		Thread.sleep(1000);
 		
 		WebElement Countine = driver.findElement(By.id("mui-3"));
 		Countine.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(1000);
 		
 		
 	}
 	
 	
-		@Test(priority = 10, enabled = false)
+		@Test(priority = 11)
 		public void CheckOutHotal() throws InterruptedException {
 			
 
@@ -400,28 +406,29 @@ public class TestCases extends DataTestCase {
 		WebElement Cvv = driver.findElement(By.name("cvv"));
 		Cvv.sendKeys("2536");
 		
-		Thread.sleep(1000);
+		Thread.sleep(500);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		js.executeScript("window.scrollTo(0,600)");
-		Thread.sleep(1000);
+		Thread.sleep(500);
 
 		WebElement NameInput = driver.findElement(By.xpath("//input[@id='outlined-basic' and @testid='name']"));
 		NameInput.sendKeys("Mousa Abukhald");
 		
-		Thread.sleep(1000);
+		Thread.sleep(500);
 
 		js.executeScript("window.scrollTo(0,700)");
 		
-		Thread.sleep(2000);
+		Thread.sleep(500);
 		
 		WebElement PayNowButton = driver.findElement(By.id("mui-4"));
 		PayNowButton.click();
 	
+		Thread.sleep(1000);
 	}
 
 		
-	@Test(priority = 11, enabled = false)
+	@Test(priority = 12, enabled = false)
 	public void FiltersSearchResults() throws InterruptedException {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -441,9 +448,9 @@ public class TestCases extends DataTestCase {
 	}
 
 	
-	@Test(priority = 12, enabled = false)
+	@Test(priority = 13)
 	public void PromotionalOffers() throws InterruptedException {
-
+		driver.get(URL);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		js.executeScript("window.scrollTo(0,400)");
@@ -456,19 +463,20 @@ public class TestCases extends DataTestCase {
 
 		Thread.sleep(2000);
 		js.executeScript("window.scrollTo(0,600)");
+		Thread.sleep(2000);
 
 	}
 	
 	
 
-	@Test(priority = 13,enabled = false)
+	@Test(priority = 14)
 	public void CustomerSupport() throws InterruptedException {
-
+		driver.get(URL);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		js.executeScript("window.scrollTo(0,7800)");
 
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 
 		WebElement ContactUsLink = driver.findElement(By.linkText("Contact Us"));
 		ContactUsLink.click();
@@ -520,7 +528,7 @@ public class TestCases extends DataTestCase {
 		ContactDescription.sendKeys("Hello,I’m Mousa Nedal Abukhaled,"
 				+ " I recently booked a hotel using your platform, but I have not yet received the booking confirmation email.");
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		WebElement SubmitRequest = driver.findElement(By.id("mui-6"));
 		SubmitRequest.click();
